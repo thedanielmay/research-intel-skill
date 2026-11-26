@@ -110,7 +110,7 @@ When WebFetch returns an error, is blocked, or returns empty/meaningless content
 
 ### Check if a scraping service is available
 
-Before attempting Layer 3, check whether the user has configured a scraping service: Print only whether each key is set. Never print a key value.
+Before attempting Layer 3, check whether the user has configured a scraping service. Print only whether each key is set. Never print a key value.
 
 ```bash
 # Check for ScrapingBee
@@ -135,7 +135,9 @@ If none are configured, or if the user has not said yes, skip Layer 3 and go to 
 ### Using ScrapingBee
 
 ```bash
-curl -s "https://app.scrapingbee.com/api/v1/?api_key=$SCRAPINGBEE_API_KEY&url={ENCODED_URL}&render_js=true" > /tmp/scraped.html
+# The address goes in on standard input, so the key does not show in the process list.
+printf 'url = "https://app.scrapingbee.com/api/v1/?api_key=%s&url=%s&render_js=true"\n' "$SCRAPINGBEE_API_KEY" "{ENCODED_URL}" |
+  curl -s -K - > /tmp/scraped.html
 ```
 
 Use `render_js=true` for JS-rendered pages (LinkedIn, Facebook, Instagram, modern SPAs).
@@ -191,7 +193,7 @@ For each URL/source you need to access:
           If WebFetch times out or returns empty: Continue.
    → NO: Try a different search query. If still nothing: Continue.
 
-3. Is a scraping service configured ($SCRAPINGBEE_API_KEY etc.) AND has the user said yes for it?
+3. Is a scraping service configured (use the key check in Layer 3) AND has the user said yes for it?
    → YES: Use Layer 3. If succeeds: Done.
    → NO (not configured, or no yes): Continue to the free browser in step 4.
       Never use a paid service without a yes.

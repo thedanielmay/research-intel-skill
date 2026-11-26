@@ -41,7 +41,7 @@ These sources apply across multiple modules or provide cross-cutting data not co
 
 | Source | Access | Modules | Notes |
 |---|---|---|---|
-| FRED (Federal Reserve Economic Data) | Free API: `https://api.stlouisfed.org/fred/series/observations?series_id={id}&api_key={key}&file_type=json` | MKT, TRD | US-focused but widely used for macro benchmarking |
+| FRED (Federal Reserve Economic Data) | Free API: `https://api.stlouisfed.org/fred/series/observations?series_id={id}&api_key=$FRED_API_KEY&file_type=json` (keep the key in the variable; never type it, and leave it out of the research log) | MKT, TRD | US-focused but widely used for macro benchmarking |
 | World Bank Open Data | Free API: `https://api.worldbank.org/v2/country/all/indicator/{INDICATOR_CODE}?format=json` | MKT, TRD, GEO | Global development indicators by country |
 | IMF Data | Free: `https://www.imf.org/en/Data` | MKT, TRD | Macroeconomic data; World Economic Outlook dataset |
 | OECD.Stat | Free: `https://stats.oecd.org/` | MKT, POL, TRD | OECD member policy and economic data; downloadable datasets |

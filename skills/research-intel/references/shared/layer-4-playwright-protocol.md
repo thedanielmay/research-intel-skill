@@ -53,7 +53,7 @@ STEP 2: Layer 2a: WebSearch to find the specific page URL.
    No useful URLs? → Try one alternate query. Still nothing? → STEP 3.
 
 STEP 3: Layer 3: Is a scraping service configured AND has the user said yes for it?
-   CHECK: for each of SCRAPINGBEE_API_KEY, ZENROWS_API_KEY and BRIGHTDATA_API_KEY, print only "set" or "not set", never the value
+   CHECK: run the key check in references/shared/web-access-layers.md. It prints only "set" or "not set"
    YES → Route through scraping service. Got useful data? DONE.
          Service also blocked? → STEP 4.
    NO  → Log URL. → STEP 4. A configured key alone is not a yes. Never use a paid service without a yes.
@@ -325,7 +325,7 @@ A captcha is a gap. Do not solve or bypass a captcha. Log the captcha as a gap u
 
 If the user reads the page themselves and pastes the content, use what they paste and cite it as user-provided.
 
-LinkedIn is not a Layer 4 target. Apply the public-source rule above to LinkedIn company pages, profiles, posts and job postings. Keep the Phase 4 research goals in `phase-playbook.md`. Change only how the data is collected.
+LinkedIn is not a Layer 4 target. Apply the public-source rule above to LinkedIn company pages, profiles, posts and job postings. In company mode, keep the Phase 4 research goals in `references/company/phase-playbook.md`. Change only how the data is collected.
 
 ---
 

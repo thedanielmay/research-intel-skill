@@ -29,10 +29,10 @@ Last updated: 2026-03-03
 **Direct API endpoints:**
 ```bash
 # ABR: look up by ABN
-curl "https://abr.business.gov.au/json/AbnDetails.aspx?abn={ABN}&callback=callback&guid={GUID}"
+printf 'url = "https://abr.business.gov.au/json/AbnDetails.aspx?abn=%s&callback=callback&guid=%s"\n' "{ABN}" "$ABR_GUID" | curl -s -K -
 
 # ABR: search by name
-curl "https://abr.business.gov.au/json/MatchingNames.aspx?name={encoded_name}&callback=callback&guid={GUID}"
+printf 'url = "https://abr.business.gov.au/json/MatchingNames.aspx?name=%s&callback=callback&guid=%s"\n' "{encoded_name}" "$ABR_GUID" | curl -s -K -
 
 # ASIC: company search (no official public API; use WebSearch or Layer 4)
 # ACNC: charity register API
@@ -41,7 +41,7 @@ curl "https://www.acnc.gov.au/api/entity/search?q={name}&type=charity"
 # OpenCorporates: cross-jurisdiction
 curl "https://api.opencorporates.com/v0.4/companies/search?q={name}&jurisdiction_code=au"
 ```
-Note: ABR API requires a GUID (free registration at abr.business.gov.au/Register). If no GUID is available, use WebFetch on the ABR search page instead.
+Note: ABR API requires a GUID (free registration at abr.business.gov.au/Register). Keep it in the `ABR_GUID` environment variable. Never type it into the session or a report. If no GUID is available, use WebFetch on the ABR search page instead.
 
 ---
 
