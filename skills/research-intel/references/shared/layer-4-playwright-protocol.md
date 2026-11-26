@@ -22,7 +22,9 @@ This document covers:
 | Layer 1 (API) | Returns HTTP 4xx/5xx, empty results array, times out, or requires an unconfigured auth key |
 | Layer 2 (WebFetch) | Returns HTTP 403/429/503; returns fewer than ~200 characters of real body text; returns a bot-check page; or times out |
 | Layer 2 (WebSearch) | Returns zero results, or all results are irrelevant URLs that do not contain the needed data |
-| Layer 3 (scraping service) | API key not configured; service returns 4xx; service returns the same blocked content as direct fetch |
+| Layer 3 (scraping service) | API key not configured; user has not said yes for it; service returns 4xx; service returns the same blocked content as direct fetch |
+
+A 429 rate limit response is not a Layer 4 trigger. Wait and retry later, or log the source as a gap. Never switch to the browser on a 429.
 
 A layer has **not failed** if you simply have not tried it yet. Work through layers in order.
 
@@ -30,8 +32,8 @@ A layer has **not failed** if you simply have not tried it yet. Work through lay
 
 All three must be true:
 - No public API exists for this source (Layer 1 inapplicable)
-- WebSearch found a URL, but WebFetch of that URL failed (Layer 2 exhausted)
-- No scraping service API key is configured (Layer 3 unavailable)
+- WebSearch found a URL, but WebFetch of that URL failed (Layer 2 exhausted), and the response was not a 429 rate limit
+- No scraping service API key is configured, or the user has not said yes for one (Layer 3 unavailable)
 
 ### The decision tree
 
@@ -46,19 +48,21 @@ STEP 1: Layer 1: Is there a known public API for this source?
 STEP 2: Layer 2a: WebSearch to find the specific page URL.
    Returns relevant URL? → WebFetch that URL.
       WebFetch returns ≥200 chars of real content? → DONE.
+      WebFetch returns 429? → Wait and retry later, or log the source as a gap. Do not go to STEP 4.
       WebFetch returns empty/blocked/403/timeout? → STEP 3.
    No useful URLs? → Try one alternate query. Still nothing? → STEP 3.
 
-STEP 3: Layer 3: Is a scraping service configured?
+STEP 3: Layer 3: Is a scraping service configured AND has the user said yes for it?
    CHECK: for each of SCRAPINGBEE_API_KEY, ZENROWS_API_KEY and BRIGHTDATA_API_KEY, print only "set" or "not set", never the value
    YES → Route through scraping service. Got useful data? DONE.
          Service also blocked? → STEP 4.
-   NO  → Log URL. → STEP 4.
+   NO  → Log URL. → STEP 4. A configured key alone is not a yes. Never use a paid service without a yes.
 
-STEP 4: Layer 4 gate:
-   Does the tier allow Layer 4, and is the source public (no login)?
+STEP 4: Layer 4 gate, the free browser read of a public page:
+   Does the tier allow Layer 4, and is the source a public page with no login?
       YES → Run Layer 4 without asking (Section 2). Record the source and the reason.
-             If it fails, go to STEP 5.
+             If it fails, go to STEP 5. For a sensitive integrity investigation,
+             confirm with the user before any Layer 4.
       NO  → Declare INACCESSIBLE. Log it (Section 3). Notify user if HIGH priority.
 
 STEP 5: If Layer 4 also fails:
@@ -69,7 +73,7 @@ STEP 5: If Layer 4 also fails:
 
 ### Automatic fallback
 
-Layer 4 is an automatic fallback. When a web search or fetch fails, move to the browser without asking, and record the URL and the reason in `research-log.md`. If Playwright is not installed, say so and log the gap with that reason. Do not use Layer 4 on a source behind a login. Do not solve or bypass a captcha. Respect each site's terms of service, robots rules and rate limits. Tier 1 and Tier 2 never use Layer 4. For a sensitive integrity investigation, Section 5 still applies. Paid scraping services (Layer 3) stay opt in.
+Layer 4 is an automatic fallback, and it applies only to the free browser read of a public page after a failed search or fetch. When a web search or fetch fails, move to the browser without asking, and record the URL and the reason in `research-log.md`. If Playwright is not installed, say so and log the gap with that reason. Do not use Layer 4 on a source behind a login. The browser never signs in. Do not solve or bypass a captcha. Log a captcha as a gap unless a person can reach the page and paste its content. A 429 rate limit response never switches to the browser. Wait and retry later, or log the source as a gap. Respect each site's terms of service, robots rules and rate limits. Tier 1 and Tier 2 never use Layer 4. For a sensitive integrity investigation, confirm with the user before any Layer 4 (Section 5). Paid scraping services (Layer 3) stay opt in. Use one only after the user says yes for it. Otherwise go to the free browser.
 
 ### Known JS-rendered public sources
 
@@ -291,7 +295,7 @@ Append to `inaccessible-sources.md` in the investigation folder:
 
 Continue silently when: all inaccessible sources for a section are MEDIUM or LOW; the section has at least two other sources covering the same need.
 
-Surface to user when: any HIGH-priority source is inaccessible; or Playwright is not installed.
+Surface to user when: any HIGH-priority source is inaccessible; or Playwright is not installed. Show a message that pages are blocked only after the free browser read (Layer 4) has also failed. When Playwright is not installed, report that tool problem instead of a blocked-pages message.
 
 **User notification (pause case):**
 ```
@@ -315,7 +319,9 @@ Never halt the entire investigation for a single inaccessible source.
 
 ## Section 4 — Sources Behind a Login
 
-A source that requires a login is a gap. Do not open a headed browser to log in, and do not save or reuse session cookies. Use only what is publicly visible through Layers 1 to 3.
+A source that requires a login is a gap. The browser never signs in. Do not open a headed browser to log in, and do not save or reuse session cookies. Use only what is publicly visible through Layers 1 to 3.
+
+A captcha is a gap. Do not solve or bypass a captcha. Log the captcha as a gap unless a person can reach the page and paste its content.
 
 If the user reads the page themselves and pastes the content, use what they paste and cite it as user-provided.
 

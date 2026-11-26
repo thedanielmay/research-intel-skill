@@ -2,7 +2,7 @@
 
 ## Overview
 
-This register provides the primary sources, API endpoints, access notes, and filtering heuristics for each topic mode module. Use Layer 1 (API) sources first, since they are faster, more reliable, and return structured data. Fall back to Layer 2 (search then fetch) and, when configured, Layer 3 (scraping service). Layer 4 (Playwright) is the automatic fallback at Tier 3, per references/shared/web-access-layers.md (except a sensitive integrity investigation: confirm with the user first)., per the references/shared/web-access-layers.md protocol.
+This register provides the primary sources, API endpoints, access notes, and filtering heuristics for each topic mode module. Use Layer 1 (API) sources first, since they are faster, more reliable, and return structured data. Fall back to Layer 2 (search then fetch) and, when configured and the user has said yes for it, Layer 3 (scraping service). Otherwise go to the free browser read (Layer 4). Layer 4 (Playwright) is the automatic fallback at Tier 3, the free browser read of a public page after a failed search or fetch (except a sensitive integrity investigation: confirm with the user first), per references/shared/web-access-layers.md.
 
 ---
 
@@ -468,9 +468,9 @@ Control web access layer usage based on investigation tier. Apply these caps whe
 | Tier | Max web access layer | Playwright (Layer 4) | Scraping service (Layer 3) | Rationale |
 |---|---|---|---|---|
 | Tier 1 — Quick Scan | Layer 2 (search -> fetch) | Never | Never | Speed and simplicity; Quick Scans should complete in ~30 min |
-| Tier 2 — Standard | Layer 3 (scraping service) | Never | Yes, if configured | Allows JS-rendered sources; preserves time budget |
-| Tier 3 — Full Investigation | Layer 3 by default, Layer 4 on failure | Yes, as automatic fallback | Yes | Layers 1 to 3 first; then Layer 4 |
+| Tier 2 — Standard | Layer 3 (scraping service) | Never | Only after the user says yes | Allows JS-rendered sources; preserves time budget |
+| Tier 3 — Full Investigation | Layer 3 by default, Layer 4 on failure | Yes, as automatic fallback | Only after the user says yes | Layers 1 to 3 first; then Layer 4 |
 
-**When Layer 3 is not configured:** Fall back to Layer 2 for Tier 2 investigations. Do not block the investigation — log the inaccessible source in `inaccessible-sources.md` and proceed.
+**When Layer 3 is not configured or the user has not said yes:** Fall back to the free browser read (Layer 4) when the tier allows it. For Tier 2, fall back to Layer 2. Do not block the investigation — log the inaccessible source in `inaccessible-sources.md` and proceed.
 
-**When Layer 4 is available:** Run it without asking when a search or fetch fails, and record which source needs it and why. If Playwright is not installed, or the browser also fails, log the source as a gap with that reason. See `references/shared/layer-4-playwright-protocol.md` for the execution protocol.
+**When Layer 4 is available:** It is only the free browser read of a public page. Run it without asking when a search or fetch fails, and record which source needs it and why (except a sensitive integrity investigation: confirm with the user first). A 429 rate limit response never switches to the browser. Wait and retry later, or log the source as a gap. If Playwright is not installed, or the browser also fails, log the source as a gap with that reason. See `references/shared/layer-4-playwright-protocol.md` for the execution protocol.

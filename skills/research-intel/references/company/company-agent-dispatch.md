@@ -19,7 +19,7 @@ Every agent dispatched from a company mode investigation must receive all of the
 3. **KIT list with current status** — each KIT labelled: answered / partial / unanswered
 4. **Research log excerpt** — sources accessed so far (prevents duplication)
 5. **Specific task for this agent** — named source targets, what to look for, return format
-6. **Tier constraint** — "This is a Tier [N] investigation. Do not use any layer above the cap for this tier. Use Layer 4 only when a search or fetch fails, and record the source and why. Layer 4 limits: no source behind a login, no LinkedIn, never solve a captcha, no stealth tools or session cookies, respect site terms, robots rules and rate limits; in a sensitive integrity investigation do not use Layer 4 unless the user has confirmed it."
+6. **Tier constraint** — "This is a Tier [N] investigation. Do not use any layer above the cap for this tier. Use Layer 4 only when a search or fetch fails, and record the source and why. Layer 4 limits: no source behind a login, no LinkedIn, never solve a captcha, log a captcha as a gap unless a person can reach the page, no stealth tools or session cookies, respect site terms, robots rules and rate limits; a 429 rate limit never switches to the browser; in a sensitive integrity investigation do not use Layer 4 unless the user has confirmed it; no paid service without a yes, otherwise go to the free browser."
 7. **Output instruction** — what to write back (see Handoff Format below)
 
 Do not dispatch agents without the scoping document and research log.
@@ -126,7 +126,7 @@ Sequential execution is always a valid fallback.
 | Tier | Max layer | Playwright (Layer 4) | Scraping service (Layer 3) |
 |---|---|---|---|
 | Tier 1 — Quick Scan | Layer 2 | Never | Never |
-| Tier 2 — Standard | Layer 3 | Never | Yes, if configured |
-| Tier 3 — Full Investigation | Layer 4 | Yes | Yes |
+| Tier 2 — Standard | Layer 3 | Never | Only after the user says yes |
+| Tier 3 — Full Investigation | Layer 4 | Yes | Only after the user says yes |
 
-Include the tier constraint in every agent briefing: "This is a Tier [N] investigation. Do not use any layer above the cap for this tier. Use Layer 4 only when a search or fetch fails, and record the source and why. Layer 4 limits: no source behind a login, no LinkedIn, never solve a captcha, no stealth tools or session cookies, respect site terms, robots rules and rate limits; in a sensitive integrity investigation do not use Layer 4 unless the user has confirmed it."
+Include the tier constraint in every agent briefing: "This is a Tier [N] investigation. Do not use any layer above the cap for this tier. Use Layer 4 only when a search or fetch fails, and record the source and why. Layer 4 limits: no source behind a login, no LinkedIn, never solve a captcha, log a captcha as a gap unless a person can reach the page, no stealth tools or session cookies, respect site terms, robots rules and rate limits; a 429 rate limit never switches to the browser; in a sensitive integrity investigation do not use Layer 4 unless the user has confirmed it; no paid service without a yes, otherwise go to the free browser."

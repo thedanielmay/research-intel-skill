@@ -1280,7 +1280,7 @@ Social media platforms are high-value OSINT sources for company research — the
 - Job postings: hiring signals about strategic direction, technology stack, geographic expansion
 
 **Access notes:**
-- Company pages: WebFetch works for basic info; use Layer 3 for public JS-rendered data. LinkedIn is not a Layer 4 target.
+- Company pages: WebFetch works for basic info; use Layer 3 for public JS-rendered data only after the user says yes for it. Otherwise go to the free browser (Layer 4). LinkedIn is not a Layer 4 target.
 - Individual profiles: use public data from Layers 1 to 3, or content the user pastes. Do not use Playwright for LinkedIn.
 - LinkedIn profile views notify the profile owner. Inform the user before viewing.
 - Employee count on the company page is rounded and updated by LinkedIn; treat as ±10% estimate
@@ -1304,7 +1304,7 @@ Social media platforms are high-value OSINT sources for company research — the
 - Employee accounts: internal culture, pride or frustration signals
 - Mentions and replies: customer complaints, industry peer commentary
 
-**Access:** WebSearch `site:twitter.com "[company name]"` for indexed tweets. WebFetch of profile pages returns limited content — use Layer 3 for JS-rendered tweet content if needed.
+**Access:** WebSearch `site:twitter.com "[company name]"` for indexed tweets. WebFetch of profile pages returns limited content — use Layer 3 for JS-rendered tweet content only after the user says yes for it. Otherwise go to the free browser (Layer 4).
 
 **Caution:** Twitter/X content is not archived reliably. Deleted tweets are gone. Screenshots in media reporting are the most durable record of controversial posts.
 
@@ -1332,7 +1332,7 @@ Social media platforms are high-value OSINT sources for company research — the
 
 **Access:**
 - Meta Ad Library is publicly accessible: `https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=AU&q=[company+name]`
-- WebFetch is blocked for facebook.com at the Claude Code network level — use Layer 3 (ScrapingBee with render_js=true) or Layer 4 (Playwright)
+- WebFetch is blocked for facebook.com at the Claude Code network level — use Layer 3 (ScrapingBee with render_js=true) only after the user says yes for it, or use the free browser (Layer 4, Playwright)
 - If Layer 3/4 are unavailable, log as manual review item with the URL above
 
 **Interpreting ad absence:** No ads in the Meta Ad Library does not mean the company isn't advertising — it may mean they advertise only on Google, LinkedIn, or industry-specific platforms.
@@ -1340,6 +1340,8 @@ Social media platforms are high-value OSINT sources for company research — the
 ---
 
 ### Platform access summary
+
+Every Layer 3 use in this table needs a yes from the user first. Without that yes, go to the free browser read (Layer 4).
 
 | Platform | Layer 1 (API) | Layer 2 (WebFetch) | Layer 3 (ScrapingBee) | Layer 4 (Playwright) |
 |---|---|---|---|---|

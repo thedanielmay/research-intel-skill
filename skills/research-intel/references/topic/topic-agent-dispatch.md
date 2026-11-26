@@ -19,6 +19,7 @@ Every agent dispatched from a topic mode investigation must receive all of the f
 3. **Research log excerpt** — sources accessed so far (prevents duplication of effort)
 4. **Specific task for this agent** — named source targets, what to look for, what format to return
 5. **Output instruction** — what to return in the final message and in what format (see Handoff Format below)
+6. **Tier constraint**: "This is a Tier [N] investigation. Do not use any layer above the cap for this tier. Use Layer 4 only when a search or fetch fails, and record the source and why. Layer 4 limits: no source behind a login, no LinkedIn, never solve a captcha, log a captcha as a gap unless a person can reach the page, no stealth tools or session cookies, respect site terms, robots rules and rate limits; a 429 rate limit never switches to the browser; in a sensitive integrity investigation do not use Layer 4 unless the user has confirmed it; no paid service without a yes, otherwise go to the free browser."
 
 Do not dispatch agents without the scoping document and research log — agents without context will duplicate work and miss KIT-specific angles.
 
@@ -122,9 +123,9 @@ Control which web access layers agents may use based on investigation tier. Brie
 | Tier | Max layer | Playwright (Layer 4) | Scraping service (Layer 3) |
 |---|---|---|---|
 | Tier 1 — Quick Scan | Layer 2 | Never | Never |
-| Tier 2 — Standard | Layer 3 | Never | Yes, if configured |
-| Tier 3 — Full Investigation | Layer 3 by default, Layer 4 on failure | Yes, as automatic fallback | Yes |
+| Tier 2 — Standard | Layer 3 | Never | Only after the user says yes |
+| Tier 3 — Full Investigation | Layer 3 by default, Layer 4 on failure | Yes, as automatic fallback | Only after the user says yes |
 
-Layer 4 is the automatic fallback at Tier 3. An agent that needs it records the source and why, then runs it without asking. If Playwright is not installed, or the browser also fails, the agent logs the source as a gap with the reason and moves on.
+Layer 4 is the automatic fallback at Tier 3, the free browser read of a public page. An agent that needs it records the source and why, then runs it without asking (except a sensitive integrity investigation: confirm with the user first). A 429 rate limit never switches to the browser. If Playwright is not installed, or the browser also fails, the agent logs the source as a gap with the reason and moves on.
 
-Include the tier constraint in every agent briefing: "This is a Tier [N] investigation. Do not use any layer above the cap for this tier. Use Layer 4 only when a search or fetch fails, and record the source and why. Layer 4 limits: no source behind a login, no LinkedIn, never solve a captcha, no stealth tools or session cookies, respect site terms, robots rules and rate limits; in a sensitive integrity investigation do not use Layer 4 unless the user has confirmed it."
+Include the tier constraint in every agent briefing: "This is a Tier [N] investigation. Do not use any layer above the cap for this tier. Use Layer 4 only when a search or fetch fails, and record the source and why. Layer 4 limits: no source behind a login, no LinkedIn, never solve a captcha, log a captcha as a gap unless a person can reach the page, no stealth tools or session cookies, respect site terms, robots rules and rate limits; a 429 rate limit never switches to the browser; in a sensitive integrity investigation do not use Layer 4 unless the user has confirmed it; no paid service without a yes, otherwise go to the free browser."

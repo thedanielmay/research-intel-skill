@@ -106,7 +106,7 @@ site:acnc.gov.au "{organisation name}"
 
 ## Layer 3 — Scraping Service for Blocked Sites
 
-When WebFetch returns an error, is blocked, or returns empty/meaningless content from a JS-rendered page, route the request through a scraping service.
+When WebFetch returns an error, is blocked, or returns empty/meaningless content from a JS-rendered page, a scraping service can help. Use a configured paid scraping service only after the user says yes for it. If the user has not said yes, go to the free browser read (Layer 4) instead. A configured API key is not a yes.
 
 ### Check if a scraping service is available
 
@@ -126,7 +126,7 @@ Before attempting Layer 3, check whether the user has configured a scraping serv
 [ -n "${SCRAPERAPI_KEY:-}" ] && echo "SCRAPERAPI_KEY: set" || echo "SCRAPERAPI_KEY: not set"
 ```
 
-If none are configured, skip Layer 3 and move to Layer 4 when the tier allows it. If the source is still blocked, note the gap in `research-log.md` with the specific URLs that need scraping. Prompt the user:
+If none are configured, or if the user has not said yes, skip Layer 3 and go to the free browser read (Layer 4) when the tier allows it and the source is public. If the browser read also fails, note the gap in `research-log.md` with the specific URLs that need scraping. Show the blocked-pages message to the user only after the free browser read has also failed:
 
 > "The following pages are blocked for direct access and would benefit from a scraping service. If you have a ScrapingBee, ZenRows, or similar API key, add it to your environment and I can retry these. Alternatively, these can be opened manually in a browser:
 > - [URL 1] — [what it contains]
@@ -159,7 +159,7 @@ Parse the result with Bash or Python as needed.
 
 ## Layer 4 — Playwright for Interactive Flows
 
-Layer 4 is an automatic fallback. When a web search or fetch fails, move to the browser without asking, and record the source and the reason in `research-log.md`. When Playwright is not installed, or the browser also fails, log the source as a gap with the reason. Do not use Layer 4 on a source behind a login. Do not solve or bypass a captcha. Respect each site's terms of service, robots rules and rate limits. Tier 1 and Tier 2 never use Layer 4. Paid scraping services (Layer 3) stay opt in.
+Layer 4 is an automatic fallback, and it applies only to the free browser read of a public page after a failed search or fetch. When a web search or fetch fails, move to the browser without asking, and record the source and the reason in `research-log.md`. When Playwright is not installed, or the browser also fails, log the source as a gap with the reason. Do not use Layer 4 on a source behind a login. The browser never signs in. Do not solve or bypass a captcha. Log a captcha as a gap unless a person can reach the page and paste its content. A 429 rate limit response never switches to the browser. Wait and retry later, or log the source as a gap. Respect each site's terms of service, robots rules and rate limits. Tier 1 and Tier 2 never use Layer 4. For a sensitive integrity investigation, confirm with the user before any Layer 4. Paid scraping services (Layer 3) stay opt in. Use one only after the user says yes for it. Otherwise go to the free browser.
 
 Use Playwright when a search or fetch fails, and when you need to:
 - Navigate multi-page flows (e.g., multi-step search forms)
@@ -171,8 +171,8 @@ Use Playwright when a search or fetch fails, and when you need to:
 
 ### When to use Playwright vs Layer 3
 
-- **Use Layer 3** when a page loads all its content on initial render (even if JS-rendered) — scraping services handle this well and are faster
-- **Use Layer 4** when content requires user interaction to load (infinite scroll, button clicks, form submission on public pages), or when Layer 3 is not configured or fails
+- **Use Layer 3** when a page loads all its content on initial render (even if JS-rendered) — scraping services handle this well and are faster, but only after the user says yes for it
+- **Use Layer 4** when content requires user interaction to load (infinite scroll, button clicks, form submission on public pages), or when Layer 3 is not configured, fails, or the user has not said yes for it
 
 ---
 
@@ -191,17 +191,23 @@ For each URL/source you need to access:
           If WebFetch times out or returns empty: Continue.
    → NO: Try a different search query. If still nothing: Continue.
 
-3. Is a scraping service configured ($SCRAPINGBEE_API_KEY etc.)?
+3. Is a scraping service configured ($SCRAPINGBEE_API_KEY etc.) AND has the user said yes for it?
    → YES: Use Layer 3. If succeeds: Done.
+   → NO (not configured, or no yes): Continue to the free browser in step 4.
+      Never use a paid service without a yes.
+
+4. Did the fetch return a 429 rate limit?
+   → YES: Wait and retry later, or log the source as a gap. Do not switch to the browser.
    → NO: Continue.
 
-4. Does the tier allow Layer 4, and is the source public (no login)?
-   → YES: Use Layer 4 (Playwright) without asking. Record the source and the
+5. Does the tier allow Layer 4, and is the source a public page with no login?
+   → YES: Use Layer 4 (Playwright), the free browser read, without asking. Record the source and the
           reason. If Playwright is not installed, or the browser also fails,
-          log the gap with the reason.
+          log the gap with the reason. For a sensitive integrity investigation,
+          confirm with the user before any Layer 4.
    → NO: Continue.
 
-5. None of the above worked?
+6. None of the above worked?
    → Log as gap in research-log.md
    → Note what the gap means for the intelligence picture
    → Flag for manual review with instructions

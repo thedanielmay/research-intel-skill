@@ -114,14 +114,15 @@ Read `references/shared/web-access-layers.md` for the full protocol. Read `refer
 
 - **Layer 1, API-first:** use public APIs where available.
 - **Layer 2, search as router:** use WebSearch to find the exact URL, then fetch only that URL. Never crawl blind.
-- **Layer 3, scraping service:** paid scraping services stay opt in. Use one only when the user has configured it. Never print a key value.
-- **Layer 4, Playwright:** the automatic fallback. When a web search or fetch fails, move to the browser without asking. Record the source and the reason in `research-log.md`.
+- **Layer 3, scraping service:** paid scraping services stay opt in. Use one only after the user says yes for it. A configured key is not a yes. Otherwise go to the free browser read (Layer 4). Never print a key value.
+- **Layer 4, Playwright:** the automatic fallback, and only the free browser read of a public page after a failed search or fetch. When a web search or fetch fails, move to the browser without asking. Record the source and the reason in `research-log.md`.
 
 Limits on Layer 4:
 
 - Tier 1 and Tier 2 never use Layer 4.
 - Do not use Layer 4 on a source behind a login.
-- Do not solve or bypass a captcha.
+- Do not solve or bypass a captcha. The browser never signs in. Log a captcha as a gap unless a person can reach the page and paste its content.
+- A 429 rate limit response never switches to the browser. Wait and retry later, or log the source as a gap.
 - LinkedIn is not a Layer 4 target. Use only LinkedIn content that is publicly visible without login through Layers 1 to 3, or content the user pastes.
 - Layer 4 runs as a normal browser that identifies as automation. Do not use stealth tools or session cookies.
 - Respect each site's terms of service, robots rules and rate limits.

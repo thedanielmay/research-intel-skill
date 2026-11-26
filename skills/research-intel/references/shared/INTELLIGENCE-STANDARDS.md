@@ -487,7 +487,7 @@ echo "ZenRows:     ${ZENROWS_API_KEY:+configured}"
 
 If the import fails, say Playwright is not installed and skip Layer 4. Log each affected source as a gap with that reason.
 
-**Layer 4 protocol:** Layer 4 is an automatic fallback. When a web search or fetch fails and the tier allows Layer 4, run the browser without asking, and record the source and the reason (except a sensitive integrity investigation: confirm with the user first). The full Layer 4 execution protocol lives in `references/shared/layer-4-playwright-protocol.md`. Read it before executing any Playwright scripts. It covers the fallback rule, decision templates, operational security, and source logging format. Both company mode and topic mode reference this file.
+**Layer 4 protocol:** Layer 4 is an automatic fallback, only the free browser read of a public page. When a web search or fetch fails and the tier allows Layer 4, run the browser without asking, and record the source and the reason (except a sensitive integrity investigation: confirm with the user first). A 429 rate limit response never switches to the browser. Wait and retry later, or log the source as a gap. The browser never signs in. Log a captcha as a gap unless a person can reach the page and paste its content. Use a paid scraping service only after the user says yes for it. Otherwise go to the free browser. The full Layer 4 execution protocol lives in `references/shared/layer-4-playwright-protocol.md`. Read it before executing any Playwright scripts. It covers the fallback rule, decision templates, operational security, and source logging format. Both company mode and topic mode reference this file.
 
 Record results in `research-log.md`. Note any unavailable tools before proceeding. Unavailable tools affect which research paths are viable.
 
@@ -506,7 +506,8 @@ All intelligence work across both skills operates within these boundaries:
 - Person research covers public role only: career, public statements, professional record, institutional affiliations. Private life is out of scope.
 - LinkedIn profile views notify the profile owner. Inform the user before viewing.
 - For every Layer 4 (Playwright) attempt, record the source and the reason. No yes is needed. If the attempt fails, log the source as a gap with the reason.
-- Do not solve or bypass a captcha. Paid scraping services stay opt in.
+- Do not solve or bypass a captcha. Log a captcha as a gap unless a person can reach the page and paste its content.
+- Paid scraping services stay opt in. Use one only after the user says yes for it. Otherwise go to the free browser read (Layer 4).
 
 ---
 

@@ -280,10 +280,10 @@ Read `references/shared/web-access-layers.md` for the full protocol.
 **Summary:**
 - **Layer 1 — API-first:** Use public APIs where available (ABS, legislation.gov.au, Semantic Scholar, CrossRef, ACNC, etc.)
 - **Layer 2 — Search as router:** Use WebSearch to find the exact URL, then fetch only that URL. Never crawl blind.
-- **Layer 3 — Scraping service:** If WebFetch fails, route through ScrapingBee/ZenRows/BrightData if configured.
+- **Layer 3 — Scraping service:** If WebFetch fails, route through ScrapingBee/ZenRows/BrightData only after the user says yes for it. A configured key is not a yes. Otherwise go to the free browser read (Layer 4).
 - **Layer 4 - Playwright:** Automatic fallback when a search or fetch fails. Tier 1 and Tier 2 never use it.
 
-**Layer 4 fallback rule:** If Layers 1, 2, and 3 have failed or are inapplicable, run Layer 4 without asking and record the exact source and why Layer 4 is needed (except a sensitive integrity investigation: confirm with the user first). If Playwright is not installed, or the browser also fails, log the source as a gap with that reason in `inaccessible-sources.md` and move on. Layer 4 runs as a normal browser that identifies as automation. LinkedIn is not a Layer 4 target. Use only LinkedIn content that is publicly visible without login through Layers 1 to 3, or content the user pastes. Read `references/shared/layer-4-playwright-protocol.md` for the execution protocol and source-logging format.
+**Layer 4 fallback rule:** Layer 4 is only the free browser read of a public page after a failed search or fetch. If Layers 1, 2, and 3 have failed or are inapplicable, run Layer 4 without asking and record the exact source and why Layer 4 is needed (except a sensitive integrity investigation: confirm with the user first). If Playwright is not installed, or the browser also fails, log the source as a gap with that reason in `inaccessible-sources.md` and move on. Layer 4 runs as a normal browser that identifies as automation. The browser never signs in. Do not solve or bypass a captcha. Log a captcha as a gap unless a person can reach the page and paste its content. A 429 rate limit response never switches to the browser. Wait and retry later, or log the source as a gap. LinkedIn is not a Layer 4 target. Use only LinkedIn content that is publicly visible without login through Layers 1 to 3, or content the user pastes. Read `references/shared/layer-4-playwright-protocol.md` for the execution protocol and source-logging format.
 
 **Pre-investigation tool check** (run once at the start of every investigation):
 ```bash
@@ -406,7 +406,7 @@ Append to `research-log.md` throughout the investigation. See `references/shared
 4. **Source independence.** Two organisations citing the same government report = one source.
 5. **Gaps are intelligence.** Interpret every gap — don't just list it.
 6. **Contested knowledge.** Where genuine expert disagreement exists, surface it — don't resolve it artificially.
-7. **Layer 4 is an automatic fallback.** If Layers 1-3 fail, record the source and why, then run Playwright without asking (except a sensitive integrity investigation: confirm with the user first). Tier 1 and Tier 2 never use it. Log a gap when Playwright is not installed or the browser also fails.
+7. **Layer 4 is an automatic fallback for the free browser read of a public page.** If Layers 1-3 fail or are inapplicable, record the source and why, then run Playwright without asking (except a sensitive integrity investigation: confirm with the user first). Tier 1 and Tier 2 never use it. Log a gap when Playwright is not installed or the browser also fails. A 429 rate limit never switches to the browser. Use a paid scraping service only after the user says yes for it.
 8. **Ethical boundaries.** All intelligence comes from publicly accessible sources. Respect each site's terms and robots rules. Privacy Act applies. Person research covers public role only.
 9. **Actionable outputs.** The reader should know what to DO, not just what to THINK.
 10. **Single source of truth.** Standards shared with company mode (STOP gate, KIT register, saturation rule, wave thresholds, progress reporting, synthesis sequence, deliverables, disambiguation) are defined in `references/shared/INTELLIGENCE-STANDARDS.md`. Do not duplicate them here — reference them.
