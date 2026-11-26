@@ -10,6 +10,7 @@
 - A request for both modes runs company mode to the end, then topic mode, in every file.
 - The topic Scoping Document asks for the purpose and the end consumer.
 - Fixed step numbers, section pointers, three tables and one broken sentence found in a dry run.
+- The scraping service guide covers keys for other services and warns about quotes, backslashes and line breaks.
 
 ## 1.0.0 - 2026-11-26
 
