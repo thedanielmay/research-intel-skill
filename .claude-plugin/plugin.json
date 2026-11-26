@@ -1,0 +1,22 @@
+{
+  "name": "research-intel",
+  "version": "1.0.0",
+  "description": "Deep, multi-source intelligence research on a named company or a non-company topic: entity verification, financial intelligence, people profiling, markets, policy, regulation and trends.",
+  "author": {
+    "name": "Daniel May",
+    "url": "https://github.com/thedanielmay"
+  },
+  "homepage": "https://github.com/thedanielmay/research-intel-skill",
+  "repository": "https://github.com/thedanielmay/research-intel-skill",
+  "license": "MIT",
+  "keywords": [
+    "research",
+    "intelligence",
+    "osint",
+    "due diligence",
+    "competitor",
+    "market research",
+    "policy",
+    "australia"
+  ]
+}
