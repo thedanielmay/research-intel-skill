@@ -21,7 +21,7 @@ Every agent dispatched from a company mode investigation must receive all of the
 3. **KIT list with current status** — each KIT labelled: answered / partial / unanswered
 4. **Research log excerpt** — sources accessed so far (prevents duplication)
 5. **Specific task for this agent** — named source targets, what to look for, return format
-6. **Tier constraint** — "This is a Tier [N] investigation. Highest web layer: [2 | 3 | 4]. Tier 1 and Tier 2 never use Layer 4. Yes from the user for a paid scraping service: [yes, name of service | no]. Sensitive integrity investigation: [no | yes, browser confirmed by the user | yes, browser not confirmed]. Use Layer 4 only when the highest layer is 4 and a search or fetch has failed, and record the source and why. If the browser is not confirmed, do not use Layer 4. Without a yes, use no paid service. You cannot ask the user: report each blocked source in your final message. Layer 4 limits: no source behind a login, no LinkedIn, never solve a captcha, a captcha or bot check page is a gap, no stealth tools or session cookies, respect site terms, robots rules and rate limits; a 429 rate limit never switches to the browser." Fill every bracket before dispatch.
+6. **Tier constraint** — "This is a Tier [N] investigation. Highest web layer: [2 | 3 | 4]. Tier 1 and Tier 2 never use Layer 4. Yes from the user for a paid scraping service: [yes, name of service | no]. Sensitive integrity investigation: [no | yes, browser confirmed by the user | yes, browser not confirmed]. Use Layer 4 only when the highest layer is 4 and a search or fetch has failed, and record the source and why. If the browser is not confirmed, do not use Layer 4. Without a yes, use no paid service. You cannot ask the user: report each blocked source in your final message. Layer 4 limits: no source behind a login, no LinkedIn, never solve a captcha, a captcha or bot check page is a gap, no stealth tools or session cookies, respect site terms, robots rules and rate limits; a 429 rate limit never switches to the browser. Tier 4 (Revenue Discovery): use Layer 4 only for these sources, which the user approved: [list | none]." Fill every bracket before dispatch.
 7. **Output instruction** — what to write back (see Handoff Format below)
 
 Do not dispatch agents without the scoping document and research log.
@@ -82,13 +82,13 @@ New sources to follow up: [any URLs or source names surfaced but not yet accesse
 
 #### Company mode
 
-Wave 1 confirms the entity, classifies entity type, establishes KITs, and produces the Company Scoping Document. All later agents need this document in their briefing. Do not dispatch agents before Wave 1 is complete.
+Phase 0 establishes the KITs and produces the Company Scoping Document, which the user confirms. Wave 1 then confirms the entity. All later agents need the document in their briefing. Do not dispatch agents before Wave 1 is complete.
 
 #### Topic mode
 
-Wave 1 must complete before any agents are dispatched. It confirms the topic, establishes KITs, and produces the scoping document that all agents need in their briefing. Running agents before the scoping document is confirmed is the most common failure mode in parallelised investigations.
+Wave 1 must complete before any agents are dispatched. Phase 0 establishes the KITs and produces the scoping document, which the user confirms and all agents need in their briefing. Wave 1 then confirms the topic. Running agents before the scoping document is confirmed is the most common failure mode in parallelised investigations.
 
-### Wave 2 — Primary Research (parallelise across KITs and source types)
+### Wave 2 — Primary Research (company mode: by source cluster; topic mode: across KITs and source types)
 
 **Parallelisable tasks:**
 
@@ -125,9 +125,9 @@ Wave 1 must complete before any agents are dispatched. It confirms the topic, es
 - Agent C (stakeholder mapping): "Identify all significant organisations, individuals, and networks relevant to [topic]. Sources: [source list]. Map relationships where evident."
 - Agent D (data/statistics): "Find quantitative data relevant to [topic]. Priority: official government statistics, then industry data, then secondary estimates. Record source, date, methodology where stated."
 
-**Wave 2 minimum threshold gate:** If any agent returns fewer than 3 substantive sources for its assigned KIT, pause and report to the user before proceeding to Wave 3. Do not build synthesis on a thin evidence base.
+**Wave 2 minimum threshold gate:** If primary source identification returns fewer than 3 substantive sources for any KIT, pause and report to the user before proceeding to Wave 3. Do not build synthesis on a thin evidence base.
 
-### Wave 3 — Secondary Research (parallelise by source type)
+### Wave 3 — Secondary Research (company mode: by phase; topic mode: by source type)
 
 **Parallelisable tasks:**
 
@@ -177,7 +177,7 @@ Wave 1 must complete before any agents are dispatched. It confirms the topic, es
 **Per-agent brief structure:**
 
 - **Agent H (Framework analysis):** "Apply [framework] to the following evidence set from the research log. Template: [paste from references/company/analytical-frameworks.md]. Evidence: [paste relevant research log sections]. Include a 'So What?' paragraph connecting the framework output to the stated purpose: [paste from company-scoping.md]."
-- **Agent I (Industry/Market):** "Research the competitive and market context for [company]. Identify: direct and indirect competitors, competitive positioning, market dynamics, barriers to entry. Use topic mode (Module MKT) if the sector itself is a primary KIT. Otherwise run Phase 10 scope only."
+- **Agent I (Industry/Market):** "Research the competitive and market context for [company]. Identify: direct and indirect competitors, competitive positioning, market dynamics, barriers to entry. Run Phase 10 scope only. If the sector itself is a primary KIT, say so in your final message, so that the orchestrator can offer a topic mode investigation."
 
 #### Topic mode
 
@@ -188,8 +188,8 @@ Wave 1 must complete before any agents are dispatched. It confirms the topic, es
 
 **Per-agent brief structure:**
 
-- Agent H (framework): "Apply [framework name] to the following evidence set. Template: [paste relevant framework from topic-analytical-frameworks.md]. Evidence: [paste relevant research log sections]."
-- Agent I (synthesis draft): "Draft [KIT Answer Register / Critical Findings / Executive Summary] using the evidence in the research log. Template: [paste relevant section from topic-outputs.md]."
+- Agent H (framework): "Apply [framework name] to the following evidence set. Template: [paste relevant framework from references/topic/topic-analytical-frameworks.md]. Evidence: [paste relevant research log sections]."
+- Agent I (synthesis draft): "Draft [KIT Answer Register / Critical Findings / Executive Summary] using the evidence in the research log. Template: [paste relevant section from references/topic/topic-outputs.md]."
 
 ### Wave 5 — Synthesis and QA (partial parallelisation)
 
@@ -216,7 +216,7 @@ Wave 1 must complete before any agents are dispatched. It confirms the topic, es
 **Per-agent brief structure:**
 
 - Agent J (Expert QA — Expert 1): "Review the attached synthesis draft as [Expert Name, role]. Identify gaps, weak analysis, or missing intelligence in your domain. Flag issues as [QA FLAG: description]. Template: [paste expert profile from references/topic/topic-expert-panels.md]."
-- Agent K (deliverable generation): "Write the [specific deliverable] to [file path] using this template: [paste template from topic-outputs.md]. Evidence: [paste relevant synthesis sections]."
+- Agent K (deliverable generation): "Write the [specific deliverable] to [file path] using this template: [paste template from references/topic/topic-outputs.md]. Evidence: [paste relevant synthesis sections]."
 
 
 ---
@@ -252,8 +252,9 @@ Control which web access layers agents may use based on investigation tier. Brie
 | Tier 2 — Standard | Layer 3 | Never | Only after the user says yes |
 | Tier 3 — Full Investigation (company mode) | Layer 4 | Yes | Only after the user says yes |
 | Tier 3 — Full Investigation (topic mode) | Layer 3 by default, Layer 4 on failure | Yes, as automatic fallback | Only after the user says yes |
+| Tier 4 — Revenue Discovery (company mode) | Layer 4 | Only for a source the user approved | Only after the user says yes |
 
-Include the tier constraint in every agent briefing: "This is a Tier [N] investigation. Highest web layer: [2 | 3 | 4]. Tier 1 and Tier 2 never use Layer 4. Yes from the user for a paid scraping service: [yes, name of service | no]. Sensitive integrity investigation: [no | yes, browser confirmed by the user | yes, browser not confirmed]. Use Layer 4 only when the highest layer is 4 and a search or fetch has failed, and record the source and why. If the browser is not confirmed, do not use Layer 4. Without a yes, use no paid service. You cannot ask the user: report each blocked source in your final message. Layer 4 limits: no source behind a login, no LinkedIn, never solve a captcha, a captcha or bot check page is a gap, no stealth tools or session cookies, respect site terms, robots rules and rate limits; a 429 rate limit never switches to the browser."
+Include the tier constraint in every agent briefing: "This is a Tier [N] investigation. Highest web layer: [2 | 3 | 4]. Tier 1 and Tier 2 never use Layer 4. Yes from the user for a paid scraping service: [yes, name of service | no]. Sensitive integrity investigation: [no | yes, browser confirmed by the user | yes, browser not confirmed]. Use Layer 4 only when the highest layer is 4 and a search or fetch has failed, and record the source and why. If the browser is not confirmed, do not use Layer 4. Without a yes, use no paid service. You cannot ask the user: report each blocked source in your final message. Layer 4 limits: no source behind a login, no LinkedIn, never solve a captcha, a captcha or bot check page is a gap, no stealth tools or session cookies, respect site terms, robots rules and rate limits; a 429 rate limit never switches to the browser. Tier 4 (Revenue Discovery): use Layer 4 only for these sources, which the user approved: [list | none]."
 
 ### Topic mode
 

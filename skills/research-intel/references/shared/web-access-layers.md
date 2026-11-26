@@ -147,7 +147,7 @@ Use `render_js=false` for simple HTML pages (faster, cheaper).
 
 Parse the result with Bash or Python as needed.
 
-These steps cover ScrapingBee. For ZenRows, BrightData or ScraperAPI, follow that service's own instructions for the address and options. Send any line that holds the key to `curl -K -` on standard input, as above. Never put the key in a command argument, even when the service's own example does.
+These steps cover ScrapingBee. For ZenRows, BrightData or ScraperAPI, follow that service's own instructions for the address and options. Send any line that holds the key to `curl -K -` on standard input, as above. Never put the key in an argument of `curl` or another program, even when the service's own example does. `printf` is built into the shell, so its arguments do not show.
 
 ### Sites that commonly require Layer 3
 

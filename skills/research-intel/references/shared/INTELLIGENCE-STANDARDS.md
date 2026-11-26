@@ -476,7 +476,7 @@ Is this research about the organisation itself, or the broader topic/landscape?
 
 ## 15. Pre-Investigation Tool Check
 
-Run once per investigation, after the user confirms the Scoping Document and before Wave 1. Record actual results. Do not assume any tool is available:
+Run once per investigation, after the user confirms the Scoping Document and before Wave 1. On a resumed or refreshed investigation, run it before the first search. Record actual results. Do not assume any tool is available:
 
 ```bash
 python3 -c "import playwright" 2>/dev/null || echo "Playwright is not installed"

@@ -85,7 +85,7 @@ Save to: `_company-{slug}/00-summary/company-scoping.md`
 
 ### Step 6: Entity Type Classification
 
-After the Scoping Document is confirmed, classify the target entity before KIT elicitation. Read `references/company/company-entity-modules.md` and select the matching entity type:
+After the Scoping Document is confirmed, classify the target entity. If a module default changes the KITs, ask the user to confirm the new KITs. Read `references/company/company-entity-modules.md` and select the matching entity type:
 
 ```
 ENTITY TYPE
@@ -102,7 +102,7 @@ Entity type: [code]
 ```
 
 Once classified, load the matching module from `references/company/company-entity-modules.md` for:
-- Default KIT suggestions (propose to user if KITs not specified)
+- Default KIT suggestions (propose to the user as a change to the confirmed KITs)
 - Source priority order for this entity type
 - Phase emphasis (which phases get deepest treatment)
 - Data-currency warning applicable to this entity type

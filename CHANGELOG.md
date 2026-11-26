@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.1 - 2026-11-26
+## 1.1.0 - 2026-11-26
 
 - Joined the company and topic agent dispatch guides into `references/shared/agent-dispatch.md`, removed the two old files and updated every reference to them.
 - Added `references/topic/investigation-setup.md` with the dependency check, disambiguation, invocation and folder structure moved out of `references/topic/skill.md`, and pointed the topic mode files at it.
@@ -9,7 +9,9 @@
 - The tool check runs after the user confirms the Scoping Document.
 - A request for both modes runs company mode to the end, then topic mode, in every file.
 - The topic Scoping Document asks for the purpose and the end consumer.
-- Fixed step numbers, section pointers, three tables and one broken sentence found in a dry run.
+- Step numbers, section pointers, tables and one OSINT sentence read correctly.
+- Agent briefs for Tier 4 name the sources the user approved for the browser.
+- Topic mode runs its dependency check first, and Phase 0 owns the Scoping Document in both modes.
 - The scraping service guide covers keys for other services and warns about quotes, backslashes and line breaks.
 
 ## 1.0.0 - 2026-11-26

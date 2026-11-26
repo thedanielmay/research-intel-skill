@@ -73,7 +73,7 @@ Is this research about the organisation itself, or the broader topic?
 
 **If user selects C:** Leave topic mode. Switch to company mode instead — it is purpose-built for named legal entities.
 **If user selects T:** Continue with topic mode.
-**If user selects B:** Run company mode first for the entity, then return to topic mode for the sector context.
+**If user selects B:** Run company mode for the entity first and finish it, then return to topic mode for the sector context.
 
 Full routing logic and natural hand-off points between modes are documented in `references/shared/INTELLIGENCE-STANDARDS.md` Section 14.
 

@@ -13,6 +13,9 @@ A structured intelligence-gathering skill that performs deep, multi-source resea
 
 **Announce at start:** "Using the research-intel skill (topic mode) to conduct a structured intelligence investigation."
 
+## Dependency Check
+
+Before doing anything else, run the dependency check in `references/topic/investigation-setup.md`. It lists the skills that work best with this one and the message to show when any are missing.
 
 **Reference files. Read each one at the time named below.**
 
@@ -181,7 +184,7 @@ See `references/shared/INTELLIGENCE-STANDARDS.md` Section 4 for the full grading
 
 Run phases in waves to maximise efficiency:
 
-**Wave 1** (must complete first, after the user confirms the Phase 0 Scoping Document): tool check and topic confirmation
+**Wave 1** (must complete first, after the user confirms the Phase 0 Scoping Document and the tool check has run): topic confirmation
 **Wave 2** (parallel): Primary source identification + stakeholder/actor mapping + data and statistics search
 **Wave 3** (after Wave 2): Media and community sources + policy/regulatory/technical depth + cross-reference
 **Wave 4** (after all data): Framework analysis and synthesis
