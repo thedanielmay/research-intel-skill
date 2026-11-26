@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 - 2026-11-26
+## 1.0.0 - 2026-11-26
 
 - Combined company-intel and topic-intel into one research-intel skill. The router dispatches to the company and topic bodies under `skills/research-intel/references/`.
 - Moved the three shared reference files into `references/shared/` and copied each once after checking that both sources were identical.
@@ -8,6 +8,9 @@
 - Did not copy the superseded `references/expert-panels.md`. The Phase 11 QA pointers now name `company-expert-panels.md`.
 - Fixed every internal file path to the new layout. Replaced em dashes and en dashes inside printed code block templates only.
 - Did not copy metadata.json files.
+- Helper agent briefs state the highest web layer, the paid service answer and the sensitive investigation answer.
+- A captcha or bot check page is a gap. The user is asked before a paid service call, and is told about every source that stays blocked.
+- Revenue Discovery uses the browser only after a yes.
 - Every key check covers the same four services and never prints a key. Keys stay in environment variables and out of the research log.
 - Added `skills/research-intel/SKILL.md`: mode choice, the shared stop gates and rules, and the reading list for each mode.
 - A change of mode now starts the new mode at its own Phase 0, with its own gates.

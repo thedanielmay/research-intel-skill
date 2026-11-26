@@ -26,6 +26,8 @@ This document covers:
 
 A 429 rate limit response is not a Layer 4 trigger. Wait and retry later, or log the source as a gap. Never switch to the browser on a 429.
 
+A captcha or bot check page is not a Layer 4 trigger either. Log it as a gap, unless a person can reach the page and paste its content.
+
 A layer has **not failed** if you simply have not tried it yet. Work through layers in order.
 
 ### What counts as "no other approach defined"?
@@ -77,7 +79,7 @@ Layer 4 is an automatic fallback, and it applies only to the free browser read o
 
 ### Known JS-rendered public sources
 
-For these sources, do not attempt WebFetch. Use Layer 2 WebSearch to find the URL, then move to Layer 4 when the tier allows it:
+A direct fetch of these sources often returns an empty page. Use Layer 2 WebSearch to find the URL and fetch it once. If that fetch fails, move to Layer 4 when the tier and the site terms allow it:
 - `glassdoor.com`: all pages
 - `seek.com.au`: job listing detail pages
 - `productreview.com.au`: review pages
@@ -246,10 +248,14 @@ def fetch_with_retry(url, max_retries):
                 browser = p.chromium.launch(headless=True)
                 context = browser.new_context()
                 page = context.new_page()
-                page.goto(url, timeout=TIMEOUT_MS, wait_until="domcontentloaded")
+                response = page.goto(url, timeout=TIMEOUT_MS, wait_until="domcontentloaded")
                 time.sleep(2)
                 content = page.inner_text("body")
                 browser.close()
+                short = len(content) < 2000 and "captcha" in content.lower()
+                if (response is not None and response.status == 429) or short:
+                    print("LAYER4_STOP: rate limit or captcha page. Log a gap. Do not retry.", file=sys.stderr)
+                    sys.exit(2)
                 if len(content) > 200:
                     return content
                 print(f"Attempt {attempt+1}: thin content ({len(content)} chars), retrying...",

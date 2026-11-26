@@ -28,6 +28,8 @@ Before generating the final PDF synthesis, route the complete dossier through AL
 
 **When:** Always, as the final step before invoking `document-skills:pdf`. Reviews outputs only — does not re-run research phases.
 
+**Scope:** the full synthesis output, including the RAG Dashboard, the Engagement Playbook and the Competitive Profile.
+
 ---
 
 ## Expert Sets by Entity Module

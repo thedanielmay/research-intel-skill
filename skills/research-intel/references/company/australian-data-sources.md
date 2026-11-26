@@ -693,7 +693,7 @@ When a paywalled source is the most authoritative source for a KIT answer:
 
 ## Quick Reference: The Original 8 Sources
 
-These are the foundational sources embedded in the company-intel skill from the outset:
+These are the foundational sources built into company mode from the outset:
 
 | # | Source | URL | Primary Use |
 |---|--------|-----|-------------|

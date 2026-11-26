@@ -131,9 +131,9 @@ PRIVACY AND COMPLIANCE CHECKPOINT
 4. Does this investigation need director or beneficial owner property or home address searches?
    [yes / no. Answer yes only for a due diligence purpose that needs these searches]
 
-5. Will Playwright (Layer 4) be used? If yes, note that:
+5. Layer 4 (Playwright) runs automatically at Tier 3 after a failed fetch. Note that:
    - Research leaves traces visible in website analytics
-   - LinkedIn notifies profile owners when viewed
+   - LinkedIn is not a Layer 4 target
    - Some platforms prohibit scraping in their Terms of Service
    - Spread research across sessions for sensitive investigations
 ```

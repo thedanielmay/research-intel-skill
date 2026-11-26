@@ -3,7 +3,7 @@ name: research-intel
 description: "Deep, multi-source intelligence research on a named company or organisation, or on a named non-company topic: a market, industry, policy or regulation, technology, trend, community, academic field or public figure. Use this skill when the user asks for research, due diligence, a dossier, a deep dive, a brief or intelligence on a named subject, or names this skill. Triggers include: 'research [company]', 'due diligence on [company]', 'background on [company]', 'competitor analysis', 'who is [company]', 'prepare a dossier on [company]'. Also use when preparing for meetings with or pitches to a specific organisation. If the subject is ambiguous between a company and a topic, show the disambiguation prompt."
 license: MIT
 metadata:
-  version: "0.1.0"
+  version: "1.0.0"
 ---
 
 # Research Intelligence
@@ -52,7 +52,7 @@ Is this research about the organisation itself, or the broader topic?
 
 When the user names no subject, ask whether the research is about a company or a topic. Then show that mode's invocation menu.
 
-**A change of mode starts a new investigation.** This applies to choice B and to every hand-off between modes. Run the new mode from its Phase 0, with its own dependency check, Scoping Document, STOP gates and output folder.
+**A change of mode starts a new investigation.** This applies to choice B and to every hand-off between modes. Run the new mode from its Phase 0, with its own dependency check, Scoping Document, STOP gates and output folder. A mode that paused for a hand-off resumes when the other dossier is done.
 
 Full routing logic and natural hand-off points between modes are documented in `references/shared/INTELLIGENCE-STANDARDS.md` Section 14.
 
@@ -120,6 +120,7 @@ Read `references/shared/web-access-layers.md` for the full protocol. Read `refer
 Limits on Layer 4:
 
 - Tier 1 and Tier 2 never use Layer 4.
+- Tier 4 (Revenue Discovery) uses Layer 4 only after the user says yes for that source.
 - Do not use Layer 4 on a source behind a login.
 - Do not solve or bypass a captcha. The browser never signs in. Log a captcha as a gap unless a person can reach the page and paste its content.
 - A 429 rate limit response never switches to the browser. Wait and retry later, or log the source as a gap.

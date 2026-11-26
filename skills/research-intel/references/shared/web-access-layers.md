@@ -126,9 +126,9 @@ Before attempting Layer 3, check whether the user has configured a scraping serv
 [ -n "${SCRAPERAPI_KEY:-}" ] && echo "SCRAPERAPI_KEY: set" || echo "SCRAPERAPI_KEY: not set"
 ```
 
-If none are configured, or if the user has not said yes, skip Layer 3 and go to the free browser read (Layer 4) when the tier allows it and the source is public. If the browser read also fails, note the gap in `research-log.md` with the specific URLs that need scraping. Show the blocked-pages message to the user only after the free browser read has also failed:
+When a service is set, the tier allows Layer 3 and a source is blocked, ask the user once whether to use it. Name the service. Call it only after a yes. If no service is set, or the user says no, skip Layer 3 and go to the free browser read (Layer 4) when the tier allows it and the source is public. When a source stays blocked, because the browser read failed or the tier does not allow it, note the gap in `research-log.md` with the URL and show this message:
 
-> "The following pages are blocked for direct access and would benefit from a scraping service. If you have a ScrapingBee, ZenRows, or similar API key, add it to your environment and I can retry these. Alternatively, these can be opened manually in a browser:
+> "The following pages are blocked for direct access and would benefit from a scraping service. If you have a ScrapingBee, ZenRows, or similar API key, add it to your environment, tell me to use it, and I can retry these. Alternatively, these can be opened manually in a browser:
 > - [URL 1] — [what it contains]
 > - [URL 2] — [what it contains]"
 
@@ -145,13 +145,15 @@ Use `render_js=false` for simple HTML pages (faster, cheaper).
 
 Parse the result with Bash or Python as needed.
 
+These steps cover ScrapingBee. For ZenRows, BrightData or ScraperAPI, follow that service's own instructions. Keep the key out of the command line in the same way.
+
 ### Sites that commonly require Layer 3
 
 | Site | Issue | Layer 3 fix |
 |------|-------|-------------|
 | LinkedIn company/profile pages | Bot detection | `render_js=true` |
 | Facebook / Meta Ad Library | Blocked at network level | `render_js=true` |
-| Instagram | JS-rendered, login required | `render_js=true` |
+| Instagram | JS-rendered. Content behind a login is a gap | `render_js=true` |
 | Glassdoor | Bot detection | `render_js=true` |
 | ProductReview.com.au | JS-rendered | `render_js=true` |
 | Seek.com.au | Bot detection | `render_js=true` |

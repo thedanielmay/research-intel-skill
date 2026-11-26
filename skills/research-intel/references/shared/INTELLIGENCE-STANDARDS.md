@@ -434,7 +434,7 @@ KIT 1: [answered / partial / unanswered] | KIT 2: [status] | KIT 3: [status]
 
 ## 14. Disambiguation — Routing Between Skills
 
-The two intelligence skills are complementary and must route to each other at natural hand-off points.
+The two modes are complementary and must route to each other at natural hand-off points.
 
 ### Subject classification table
 
@@ -464,7 +464,7 @@ Is this research about the organisation itself, or the broader topic/landscape?
 
 **If C:** Use company mode.
 **If T:** Use topic mode.
-**If B:** Run company mode for the entity first. When reaching Phase 10 (Industry & Market), switch to topic mode (Module MKT or POL) for sector-level work rather than running a lightweight market analysis inside company mode.
+**If B:** Run company mode for the entity first. At Phase 10 (Industry & Market), pause company mode and run topic mode (Module MKT or POL) for the sector work, as its own investigation from its Phase 0. Then resume company mode at Phase 10 with the topic dossier as input.
 
 ### Natural hand-off points
 
@@ -480,10 +480,10 @@ Run once at the start of every investigation. Record actual results. Do not assu
 
 ```bash
 python3 -c "import playwright" 2>/dev/null || echo "Playwright is not installed"
-echo "ScrapingBee: ${SCRAPINGBEE_API_KEY:+configured}"
-echo "BrightData:  ${BRIGHTDATA_API_KEY:+configured}"
-echo "ZenRows:     ${ZENROWS_API_KEY:+configured}"
-echo "ScraperAPI:  ${SCRAPERAPI_KEY:+configured}"
+[ -n "${SCRAPINGBEE_API_KEY:-}" ] && echo "SCRAPINGBEE_API_KEY: set" || echo "SCRAPINGBEE_API_KEY: not set"
+[ -n "${BRIGHTDATA_API_KEY:-}" ] && echo "BRIGHTDATA_API_KEY: set" || echo "BRIGHTDATA_API_KEY: not set"
+[ -n "${ZENROWS_API_KEY:-}" ] && echo "ZENROWS_API_KEY: set" || echo "ZENROWS_API_KEY: not set"
+[ -n "${SCRAPERAPI_KEY:-}" ] && echo "SCRAPERAPI_KEY: set" || echo "SCRAPERAPI_KEY: not set"
 ```
 
 If the import fails, say Playwright is not installed and skip Layer 4. Log each affected source as a gap with that reason.
