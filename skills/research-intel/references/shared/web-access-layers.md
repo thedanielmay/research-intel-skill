@@ -140,12 +140,14 @@ printf 'url = "https://app.scrapingbee.com/api/v1/?api_key=%s&url=%s&render_js=t
   curl -s -K - > /tmp/scraped.html
 ```
 
+The key and the address must not hold a double quote, a backslash or a line break, because `curl` reads them as part of its settings. Percent-encode the whole address.
+
 Use `render_js=true` for JS-rendered pages (LinkedIn, Facebook, Instagram, modern SPAs).
 Use `render_js=false` for simple HTML pages (faster, cheaper).
 
 Parse the result with Bash or Python as needed.
 
-These steps cover ScrapingBee. For ZenRows, BrightData or ScraperAPI, follow that service's own instructions. Keep the key out of the command line in the same way.
+These steps cover ScrapingBee. For ZenRows, BrightData or ScraperAPI, follow that service's own instructions for the address and options. Send any line that holds the key to `curl -K -` on standard input, as above. Never put the key in an argument of `curl` or another program, even when the service's own example does. `printf` is built into the shell, so its arguments do not show.
 
 ### Sites that commonly require Layer 3
 

@@ -288,8 +288,8 @@ Append to `inaccessible-sources.md` in the investigation folder:
 ```markdown
 | # | URL | Layers tried | Failure mode | Data needed | Priority | Manual action |
 |---|-----|---|---|---|---|---|
-| 1 | https://example.com | L1: N/A · L2: 403 · L3: not configured · L4: timeout ×3 | Pricing detail | HIGH | Open in browser; copy pricing table |
-| 2 | https://example.org/members | L2: login wall · L4: not attempted (login required) | Member detail | MEDIUM | User to read the page and paste content |
+| 1 | https://example.com | L1: N/A · L2: 403 · L3: not configured · L4: timeout ×3 | Timeout | Pricing detail | HIGH | Open in browser; copy pricing table |
+| 2 | https://example.org/members | L2: login wall · L4: not attempted (login required) | Login wall | Member detail | MEDIUM | User to read the page and paste content |
 ```
 
 **Priority:**

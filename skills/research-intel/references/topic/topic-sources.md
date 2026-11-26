@@ -458,7 +458,7 @@ When any source fails all layers, add to `inaccessible-sources.md`:
 ```markdown
 | # | URL | Layers tried | Failure mode | Data needed | Priority | Manual action |
 |---|-----|---|---|---|---|---|
-| 1 | [URL] | L1: N/A · L2: 403 · L3: not configured · L4: timeout | [what was needed] | HIGH/MEDIUM/LOW | [specific manual action] |
+| 1 | [URL] | L1: N/A · L2: 403 · L3: not configured · L4: timeout | [failure mode] | [what was needed] | HIGH/MEDIUM/LOW | [specific manual action] |
 ```
 
 For paywalled sources, use failure mode: `Paywalled — no free access` and manual action: `Access via [library/institution] or purchase`.

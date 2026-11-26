@@ -134,7 +134,7 @@ Run research in waves as defined by each skill. The universal rules:
 
 - **Wave 1** must complete before Wave 2 begins (foundation/identity confirmation)
 - **Wave 2** runs in parallel across multiple source types
-- **Wave 2 threshold gate:** If primary source identification returns fewer than the minimum substantive sources for any KIT (company mode: 2 independent sources; topic mode: 3 substantive sources), pause and report to the user before proceeding to Wave 3. Do not build synthesis on a thin evidence base.
+- **Wave 2 threshold gate:** Company mode: pause and report to the user before Wave 3 if fewer than 2 independent sources confirm the entity, or a KIT has no findings. Topic mode: pause and report to the user before Wave 3 if primary source identification returns fewer than 3 substantive sources for any KIT. In both modes, do not build synthesis on a thin evidence base.
 - Waves 3–5 may run in parallel within their wave
 
 ### Progress reporting (mandatory)
@@ -464,7 +464,7 @@ Is this research about the organisation itself, or the broader topic/landscape?
 
 **If C:** Use company mode.
 **If T:** Use topic mode.
-**If B:** Run company mode for the entity first. At Phase 10 (Industry & Market), pause company mode and run topic mode (Module MKT or POL) for the sector work, as its own investigation from its Phase 0. Then resume company mode at Phase 10 with the topic dossier as input.
+**If B:** Run company mode for the entity first and finish it. Then run topic mode (Module MKT or POL) for the sector work, as its own investigation from its Phase 0.
 
 ### Natural hand-off points
 
@@ -476,7 +476,7 @@ Is this research about the organisation itself, or the broader topic/landscape?
 
 ## 15. Pre-Investigation Tool Check
 
-Run once at the start of every investigation. Record actual results. Do not assume any tool is available:
+Run once per investigation, after the user confirms the Scoping Document and before Wave 1. On a resumed or refreshed investigation, run it before the first search. Record actual results. Do not assume any tool is available:
 
 ```bash
 python3 -c "import playwright" 2>/dev/null || echo "Playwright is not installed"

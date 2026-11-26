@@ -3,7 +3,7 @@ name: research-intel
 description: "Deep, multi-source intelligence research on a named company or organisation, or on a named non-company topic: a market, industry, policy or regulation, technology, trend, community, academic field or public figure. Use this skill when the user asks for research, due diligence, a dossier, a deep dive, a brief or intelligence on a named subject, or names this skill. Triggers include: 'research [company]', 'due diligence on [company]', 'background on [company]', 'competitor analysis', 'who is [company]', 'prepare a dossier on [company]'. Also use when preparing for meetings with or pitches to a specific organisation. If the subject is ambiguous between a company and a topic, show the disambiguation prompt."
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Research Intelligence
@@ -52,7 +52,7 @@ Is this research about the organisation itself, or the broader topic?
 
 When the user names no subject, ask whether the research is about a company or a topic. Then show that mode's invocation menu.
 
-**A change of mode starts a new investigation.** This applies to choice B and to every hand-off between modes. Run the new mode from its Phase 0, with its own dependency check, Scoping Document, STOP gates and output folder. A mode that paused for a hand-off resumes when the other dossier is done.
+**A change of mode starts a new investigation.** This applies to choice B and to every hand-off between modes. Run the new mode from its Phase 0, with its own dependency check, Scoping Document, STOP gates and output folder. A mode that paused for a hand-off resumes when the other dossier is done. Choice B is the exception to pausing: company mode runs to the end before topic mode starts.
 
 Full routing logic and natural hand-off points between modes are documented in `references/shared/INTELLIGENCE-STANDARDS.md` Section 14.
 
@@ -164,7 +164,7 @@ Gates and depth rules:
 | Start of every investigation: dependency check, disambiguation, menus, depth, tool check, folder tree | `references/company/investigation-setup.md` |
 | Before each research phase | `references/company/phase-playbook.md` |
 | Phase 0, entity type classification | `references/company/company-entity-modules.md` |
-| Before Wave 1, when dispatching parallel agents | `references/company/company-agent-dispatch.md` |
+| Before Wave 1, when dispatching parallel agents | `references/shared/agent-dispatch.md` |
 | During and after the waves: progress, research log, ratings, saturation, refresh | `references/company/ongoing-protocols.md` |
 | Phase 5 | `references/company/australian-data-sources.md` |
 | Phase 5 and Phase 6 | `references/company/investigative-methods.md` |
@@ -178,7 +178,7 @@ Gates and depth rules:
 
 ## Topic mode
 
-Read `references/topic/skill.md` first. It holds the announce line, the dependency check, the invocation menu, Phase 0, the waves, the folder structure and the key principles.
+Read `references/topic/skill.md` first. It holds the announce line, Phase 0, the waves and the key principles.
 
 Gates and depth rules:
 
@@ -190,9 +190,10 @@ Gates and depth rules:
 
 | When | Read |
 |---|---|
+| Start of every investigation: dependency check, disambiguation, menus, folder tree | `references/topic/investigation-setup.md` |
 | After classifying the topic type, before Phase 0 is complete: module KIT defaults, phases, sources, chaining | `references/topic/topic-modules.md` |
 | When identifying sources | `references/topic/topic-sources.md` |
-| When dispatching parallel agents | `references/topic/topic-agent-dispatch.md` |
+| When dispatching parallel agents | `references/shared/agent-dispatch.md` |
 | When using OSINT | `references/topic/topic-osint.md` |
 | During analysis | `references/topic/topic-analytical-frameworks.md` |
 | When producing outputs | `references/topic/topic-outputs.md` |

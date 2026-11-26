@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.1.0 - 2026-11-26
+
+- Joined the company and topic agent dispatch guides into `references/shared/agent-dispatch.md`, removed the two old files and updated every reference to them.
+- Added `references/topic/investigation-setup.md` with the dependency check, disambiguation, invocation and folder structure moved out of `references/topic/skill.md`, and pointed the topic mode files at it.
+- Matched the `expert-panel`, `document-skills:pdf` and `data-visualization` install blocks in the company setup file to the topic wording.
+- Rewrote the Wave 2 threshold gate line in `references/shared/INTELLIGENCE-STANDARDS.md` as one rule with the company and topic minimums.
+- The tool check runs after the user confirms the Scoping Document.
+- A request for both modes runs company mode to the end, then topic mode, in every file.
+- The topic Scoping Document asks for the purpose and the end consumer.
+- Step numbers, section pointers, tables and one OSINT sentence read correctly.
+- Agent briefs for Tier 4 name the sources the user approved for the browser.
+- Topic mode runs its dependency check first, and Phase 0 owns the Scoping Document in both modes.
+- The scraping service guide covers keys for other services and warns about quotes, backslashes and line breaks.
+
 ## 1.0.0 - 2026-11-26
 
 - Combined company-intel and topic-intel into one research-intel skill. The router dispatches to the company and topic bodies under `skills/research-intel/references/`.

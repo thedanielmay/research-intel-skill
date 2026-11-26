@@ -415,4 +415,4 @@ gh api "users/<username>/events/public" --paginate \
 - Track developer network (who has contributed to both this project and related projects?)
 - Find email addresses for professional contact verification in PRS-adjacent work
 
-**Note:** Email addresses found in git history are public record — they were intentionally included in signed commits. Apply ** confidence rating (publicly committed by the person themselves).
+**Note:** Email addresses found in git history are public record — they were intentionally included in signed commits. Apply a confidence rating and note that the person published the address themselves.

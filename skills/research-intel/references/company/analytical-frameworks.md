@@ -15,7 +15,7 @@ The following framework components live in the shared standards and should be ap
 | Component | Location |
 |---|---|
 | Triangulation Matrix | `references/shared/INTELLIGENCE-STANDARDS.md` §7 |
-| ACH (Analysis of Competing Hypotheses) | See §3 of this file (Contested Claims) — apply ACH format from IS.md §8 |
+| ACH (Analysis of Competing Hypotheses) | See §2.1 of this file — apply ACH format from IS.md §8 |
 | Confirmation Bias / Devil's Advocate | `references/shared/INTELLIGENCE-STANDARDS.md` §8 step 5 |
 | KIT Answer Register | `references/shared/INTELLIGENCE-STANDARDS.md` §3 |
 

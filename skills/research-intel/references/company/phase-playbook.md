@@ -50,7 +50,7 @@ Before any research begins, confirm this document with the user:
 ```
 COMPANY SCOPING DOCUMENT
 ────────────────────────
-Company:       [legal name as confirmed in Phase 0]
+Company:       [legal name as the user gave it; Phase 1 confirms it]
 Trading as:    [if different]
 Purpose:       [letter from 1a to 1h]
 Depth tier:    [1 to 4: name]
@@ -85,7 +85,7 @@ Save to: `_company-{slug}/00-summary/company-scoping.md`
 
 ### Step 6: Entity Type Classification
 
-After the Scoping Document is confirmed, classify the target entity before KIT elicitation. Read `references/company/company-entity-modules.md` and select the matching entity type:
+After the Scoping Document is confirmed, classify the target entity. If a module default changes the KITs, ask the user to confirm the new KITs. Read `references/company/company-entity-modules.md` and select the matching entity type:
 
 ```
 ENTITY TYPE
@@ -102,7 +102,7 @@ Entity type: [code]
 ```
 
 Once classified, load the matching module from `references/company/company-entity-modules.md` for:
-- Default KIT suggestions (propose to user if KITs not specified)
+- Default KIT suggestions (propose to the user as a change to the confirmed KITs)
 - Source priority order for this entity type
 - Phase emphasis (which phases get deepest treatment)
 - Data-currency warning applicable to this entity type
@@ -182,7 +182,7 @@ PRIVACY AND COMPLIANCE CHECKPOINT
    Screen the same people against politically exposed person (PEP) data. OpenSanctions is one free aggregator. Record the date of every check.
 
    A name match is a possible match. It is never a finding until the identity matching rule in Phase 5 confirms the person. Write "no match found on <date>" for a clear result. Do not write "clean".
-7. Create the research folder structure (see Folder Structure below).
+7. Create the research folder structure (see Folder Structure in `references/company/investigation-setup.md`).
 8. Save identification data to `01-identification/`.
 
 **Exit criteria:** Entity confirmed. Corporate constellation mapped. Folder structure created.

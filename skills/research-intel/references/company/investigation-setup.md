@@ -17,15 +17,16 @@ If ANY are missing, say:
 >
 > Install them using either method below, then restart your session:
 >
+> **`document-skills:pdf`**
+> - `npx skills add anthropics/skills@pdf`
+> - In Claude Code: `/plugin marketplace add anthropics/skills`, then `/plugin install document-skills@anthropic-agent-skills`
+>
+> **`data-visualization`**
+> - `npx skills add anthropics/knowledge-work-plugins@data-visualization`
+>
 > **`expert-panel`**
 > - `npx skills add thedanielmay/expert-panel-skill`
 > - `/plugin install expert-panel@thedanielmay`
->
-> **`document-skills:pdf`**
-> - `npx skills add anthropics/claude-plugins-official@document-skills`
->
-> **`data-visualization`**
-> - `npx skills add anthropics/claude-plugins-official@data-visualization`
 >
 > Or type **'continue anyway'** to proceed — steps that need missing skills will be skipped."
 
@@ -107,7 +108,7 @@ Read `references/shared/web-access-layers.md` for the full four-layer protocol (
 curl "http://web.archive.org/cdx/search/cdx?url={domain}&output=json&limit=20"
 ```
 
-**Pre-investigation tool check:** Run once at investigation start. See `references/shared/INTELLIGENCE-STANDARDS.md` Section 15 for the exact commands. Record actual results in `research-log.md`.
+**Pre-investigation tool check:** Run once per investigation, after the user confirms the Scoping Document and before Wave 1. See `references/shared/INTELLIGENCE-STANDARDS.md` Section 15 for the exact commands. Record actual results in `research-log.md`.
 
 **Cascade failure prevention:** Never run more than 3-4 WebFetch calls in parallel. Put known-slow sources (ACNC website, gov.au) in sequential calls, not batches.
 

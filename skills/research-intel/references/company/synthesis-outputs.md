@@ -51,7 +51,8 @@ Overall Assessment      │ R/A/G  │ [one-line summary]
 | Technology & Digital | Modern stack, digital-first, good reviews | Legacy systems but functional, digital transformation underway | Critical tech debt, no digital presence, security incidents |
 | Reputation | Positive media, strong employer brand, good reviews | Mixed reviews, some negative coverage, historical issues addressed | Active negative media, unresolved complaints, trust deficit |
 | ESG & Sustainability | Published framework, measurable progress, industry leader | Commitments stated but evidence thin, industry average | Greenwashing indicators, environmental incidents, labour issues |
-| Overall Assessment | Weighted summary considering investigation purpose — which areas matter most for this specific decision |
+
+**Overall Assessment:** Weighted summary considering investigation purpose — which areas matter most for this specific decision.
 
 ### Weighting by Investigation Purpose
 
