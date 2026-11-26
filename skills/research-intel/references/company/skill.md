@@ -30,7 +30,7 @@ Read each file when its trigger fires. Each file holds the detail that this body
 - `references/company/synthesis-outputs.md`: read at Phase 11 for synthesis templates and deliverable formats.
 - `references/company/company-entity-modules.md`: read at Phase 0 Step 2 for the entity type modules.
 - `references/company/company-expert-panels.md`: read at Phase 11 for the expert panel sets.
-- `references/company/company-agent-dispatch.md`: read before Wave 1 when dispatching parallel agents.
+- `references/shared/agent-dispatch.md`: read before Wave 1 when dispatching parallel agents.
 - `references/shared/INTELLIGENCE-STANDARDS.md`: read first at the start of every investigation.
 - `references/shared/web-access-layers.md`: read at investigation start for the four-layer web access protocol.
 - `references/shared/layer-4-playwright-protocol.md`: read when Layer 4 is triggered.
@@ -146,7 +146,7 @@ Use `_company-{slug}` for the dossier folder, with the company name lowercased a
 
 ## Parallel Execution Strategy
 
-Read `references/company/company-agent-dispatch.md` for the wave guide, agent briefings and timeout fallback.
+Read `references/shared/agent-dispatch.md` for the wave guide, agent briefings and timeout fallback.
 
 - Wave 1: Phase 1 only. It must finish first.
 - Wave 2: Phases 2, 3, 4 and the Phase 5 registry core, in parallel.

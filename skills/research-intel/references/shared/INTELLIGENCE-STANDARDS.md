@@ -134,7 +134,7 @@ Run research in waves as defined by each skill. The universal rules:
 
 - **Wave 1** must complete before Wave 2 begins (foundation/identity confirmation)
 - **Wave 2** runs in parallel across multiple source types
-- **Wave 2 threshold gate:** If primary source identification returns fewer than the minimum substantive sources for any KIT (company mode: 2 independent sources; topic mode: 3 substantive sources), pause and report to the user before proceeding to Wave 3. Do not build synthesis on a thin evidence base.
+- **Wave 2 threshold gate:** Company mode: pause and report to the user before Wave 3 if fewer than 2 independent sources confirm the entity, or a KIT has no findings. Topic mode: pause and report to the user before Wave 3 if primary source identification returns fewer than 3 substantive sources for any KIT. In both modes, do not build synthesis on a thin evidence base.
 - Waves 3–5 may run in parallel within their wave
 
 ### Progress reporting (mandatory)

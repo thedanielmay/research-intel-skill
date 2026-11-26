@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.1 - 2026-11-26
+
+- Joined the company and topic agent dispatch guides into `references/shared/agent-dispatch.md`, removed the two old files and updated every reference to them.
+- Added `references/topic/investigation-setup.md` with the dependency check, disambiguation, invocation and folder structure moved out of `references/topic/skill.md`, and pointed the topic mode files at it.
+- Matched the `expert-panel`, `document-skills:pdf` and `data-visualization` install blocks in the company setup file to the topic wording.
+- Rewrote the Wave 2 threshold gate line in `references/shared/INTELLIGENCE-STANDARDS.md` as one rule with the company and topic minimums.
+
 ## 1.0.0 - 2026-11-26
 
 - Combined company-intel and topic-intel into one research-intel skill. The router dispatches to the company and topic bodies under `skills/research-intel/references/`.

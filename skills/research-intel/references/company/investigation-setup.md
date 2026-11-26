@@ -17,15 +17,16 @@ If ANY are missing, say:
 >
 > Install them using either method below, then restart your session:
 >
+> **`document-skills:pdf`**
+> - `npx skills add anthropics/skills@pdf`
+> - In Claude Code: `/plugin marketplace add anthropics/skills`, then `/plugin install document-skills@anthropic-agent-skills`
+>
+> **`data-visualization`**
+> - `npx skills add anthropics/knowledge-work-plugins@data-visualization`
+>
 > **`expert-panel`**
 > - `npx skills add thedanielmay/expert-panel-skill`
 > - `/plugin install expert-panel@thedanielmay`
->
-> **`document-skills:pdf`**
-> - `npx skills add anthropics/claude-plugins-official@document-skills`
->
-> **`data-visualization`**
-> - `npx skills add anthropics/claude-plugins-official@data-visualization`
 >
 > Or type **'continue anyway'** to proceed — steps that need missing skills will be skipped."
 
