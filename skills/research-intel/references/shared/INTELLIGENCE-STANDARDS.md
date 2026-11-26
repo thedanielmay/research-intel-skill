@@ -464,7 +464,7 @@ Is this research about the organisation itself, or the broader topic/landscape?
 
 **If C:** Use company mode.
 **If T:** Use topic mode.
-**If B:** Run company mode for the entity first. At Phase 10 (Industry & Market), pause company mode and run topic mode (Module MKT or POL) for the sector work, as its own investigation from its Phase 0. Then resume company mode at Phase 10 with the topic dossier as input.
+**If B:** Run company mode for the entity first and finish it. Then run topic mode (Module MKT or POL) for the sector work, as its own investigation from its Phase 0.
 
 ### Natural hand-off points
 
@@ -476,7 +476,7 @@ Is this research about the organisation itself, or the broader topic/landscape?
 
 ## 15. Pre-Investigation Tool Check
 
-Run once at the start of every investigation. Record actual results. Do not assume any tool is available:
+Run once per investigation, after the user confirms the Scoping Document and before Wave 1. Record actual results. Do not assume any tool is available:
 
 ```bash
 python3 -c "import playwright" 2>/dev/null || echo "Playwright is not installed"

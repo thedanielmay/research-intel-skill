@@ -134,7 +134,7 @@ Topic:
 
 ### Direct invocation (topic specified)
 
-When a topic is named — whether explicit (`research-intel: [topic]`) or implicit (`Research the Victorian Social Procurement Framework`) — skip the menu and go directly to the flow below.
+When a topic is named — whether explicit (`research-intel: [topic]`) or implicit (`Research the Victorian Social Procurement Framework`) — skip the menu and go directly to Phase 0 in `references/topic/skill.md`.
 
 **Skipping the menu does not skip Phase 0.** If topic is given but investigation depth and KITs are not specified, still perform Steps 2 and 3 of Phase 0 before any research begins.
 

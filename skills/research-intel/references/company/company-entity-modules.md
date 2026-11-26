@@ -4,7 +4,7 @@
 
 Entity-type routing for company mode investigations. When Phase 0 classifies the target entity, load the matching module. The module defines KIT defaults, source priorities, phase emphasis, and output format.
 
-Read this file at Phase 0 Step 2 (after entity is confirmed, before KIT elicitation).
+Read this file at Phase 0 Step 6 (after the user confirms the Scoping Document).
 
 ---
 

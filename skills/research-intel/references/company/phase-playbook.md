@@ -50,7 +50,7 @@ Before any research begins, confirm this document with the user:
 ```
 COMPANY SCOPING DOCUMENT
 ────────────────────────
-Company:       [legal name as confirmed in Phase 0]
+Company:       [legal name as the user gave it; Phase 1 confirms it]
 Trading as:    [if different]
 Purpose:       [letter from 1a to 1h]
 Depth tier:    [1 to 4: name]
@@ -182,7 +182,7 @@ PRIVACY AND COMPLIANCE CHECKPOINT
    Screen the same people against politically exposed person (PEP) data. OpenSanctions is one free aggregator. Record the date of every check.
 
    A name match is a possible match. It is never a finding until the identity matching rule in Phase 5 confirms the person. Write "no match found on <date>" for a clear result. Do not write "clean".
-7. Create the research folder structure (see Folder Structure below).
+7. Create the research folder structure (see Folder Structure in `references/company/investigation-setup.md`).
 8. Save identification data to `01-identification/`.
 
 **Exit criteria:** Entity confirmed. Corporate constellation mapped. Folder structure created.

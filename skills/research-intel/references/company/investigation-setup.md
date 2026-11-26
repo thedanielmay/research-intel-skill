@@ -108,7 +108,7 @@ Read `references/shared/web-access-layers.md` for the full four-layer protocol (
 curl "http://web.archive.org/cdx/search/cdx?url={domain}&output=json&limit=20"
 ```
 
-**Pre-investigation tool check:** Run once at investigation start. See `references/shared/INTELLIGENCE-STANDARDS.md` Section 15 for the exact commands. Record actual results in `research-log.md`.
+**Pre-investigation tool check:** Run once per investigation, after the user confirms the Scoping Document and before Wave 1. See `references/shared/INTELLIGENCE-STANDARDS.md` Section 15 for the exact commands. Record actual results in `research-log.md`.
 
 **Cascade failure prevention:** Never run more than 3-4 WebFetch calls in parallel. Put known-slow sources (ACNC website, gov.au) in sequential calls, not batches.
 

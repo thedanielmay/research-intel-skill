@@ -28,7 +28,7 @@ Read each file when its trigger fires. Each file holds the detail that this body
 - `references/company/analytical-frameworks.md`: read at Phase 11 for frameworks and templates.
 - `references/company/investigative-methods.md`: read at Phase 5 and Phase 6 for due diligence and investigative techniques.
 - `references/company/synthesis-outputs.md`: read at Phase 11 for synthesis templates and deliverable formats.
-- `references/company/company-entity-modules.md`: read at Phase 0 Step 2 for the entity type modules.
+- `references/company/company-entity-modules.md`: read at Phase 0 Step 6 for the entity type modules.
 - `references/company/company-expert-panels.md`: read at Phase 11 for the expert panel sets.
 - `references/shared/agent-dispatch.md`: read before Wave 1 when dispatching parallel agents.
 - `references/shared/INTELLIGENCE-STANDARDS.md`: read first at the start of every investigation.
@@ -67,7 +67,7 @@ Run the phases in order. Wave parallelisation is described below. Read `referenc
 
 ### Phase 0: Intelligence Requirements Definition
 
-Define the decision, the KITs, the end consumer and the time horizon. Confirm the Company Scoping Document with the user before any research. Classify the entity type at Step 2 using `references/company/company-entity-modules.md`. Complete the privacy checkpoint. The full steps and every template are in `references/company/phase-playbook.md`.
+Define the decision, the KITs, the end consumer and the time horizon. Confirm the Company Scoping Document with the user before any research. Classify the entity type at Step 6, after the user confirms the document, using `references/company/company-entity-modules.md`. Complete the privacy checkpoint. The full steps and every template are in `references/company/phase-playbook.md`.
 
 **STOP gate:** run no search, tool check or WebFetch call until the user confirms the Company Scoping Document.
 

@@ -6,6 +6,10 @@
 - Added `references/topic/investigation-setup.md` with the dependency check, disambiguation, invocation and folder structure moved out of `references/topic/skill.md`, and pointed the topic mode files at it.
 - Matched the `expert-panel`, `document-skills:pdf` and `data-visualization` install blocks in the company setup file to the topic wording.
 - Rewrote the Wave 2 threshold gate line in `references/shared/INTELLIGENCE-STANDARDS.md` as one rule with the company and topic minimums.
+- The tool check runs after the user confirms the Scoping Document.
+- A request for both modes runs company mode to the end, then topic mode, in every file.
+- The topic Scoping Document asks for the purpose and the end consumer.
+- Fixed step numbers, section pointers, three tables and one broken sentence found in a dry run.
 
 ## 1.0.0 - 2026-11-26
 

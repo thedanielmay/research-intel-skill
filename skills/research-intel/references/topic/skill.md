@@ -89,7 +89,7 @@ KEY INTELLIGENCE TOPICS
 What are the 2 to 5 questions you most need this research to answer?
 These drive the entire investigation, the more specific, the better.
 
-[Show examples relevant to the topic type, see Topic Type Modules below]
+[Show examples relevant to the topic type, see `references/topic/topic-modules.md`]
 
 Your KITs (list them, one per line):
 ```
@@ -106,6 +106,8 @@ TOPIC SCOPING DOCUMENT
 Topic:        [topic as refined]
 Topic type:   [code and name]
 Depth tier:   [1/2/3: name]
+Purpose:      [the decision this intelligence supports]
+End consumer: [who receives it]
 Output:       [what will be produced]
 
 Key Intelligence Topics:
@@ -150,7 +152,7 @@ Read `references/shared/web-access-layers.md` for the full protocol.
 
 **Layer 4 fallback rule:** Layer 4 is only the free browser read of a public page after a failed search or fetch. If a search or fetch has failed and Layers 1 to 3 give no other way, run Layer 4 without asking and record the exact source and why Layer 4 is needed (except a sensitive integrity investigation: confirm with the user first). If Playwright is not installed, or the browser also fails, log the source as a gap with that reason in `inaccessible-sources.md` and move on. Layer 4 runs as a normal browser that identifies as automation. The browser never signs in. Do not solve or bypass a captcha. Log a captcha as a gap unless a person can reach the page and paste its content. A 429 rate limit response never switches to the browser. Wait and retry later, or log the source as a gap. LinkedIn is not a Layer 4 target. Use only LinkedIn content that is publicly visible without login through Layers 1 to 3, or content the user pastes. Read `references/shared/layer-4-playwright-protocol.md` for the execution protocol and source-logging format.
 
-**Pre-investigation tool check** (run once at the start of every investigation):
+**Pre-investigation tool check** (run once per investigation, after the user confirms the Scoping Document and before Wave 1):
 ```bash
 python3 -c "import playwright" 2>/dev/null && echo "playwright ok" || echo "playwright NOT installed; skip Layer 4"
 [ -n "${SCRAPINGBEE_API_KEY:-}" ] && echo "SCRAPINGBEE_API_KEY: set" || echo "SCRAPINGBEE_API_KEY: not set"
@@ -179,7 +181,7 @@ See `references/shared/INTELLIGENCE-STANDARDS.md` Section 4 for the full grading
 
 Run phases in waves to maximise efficiency:
 
-**Wave 1** (must complete first): Phase 0 — scope definition and tool check
+**Wave 1** (must complete first, after the user confirms the Phase 0 Scoping Document): tool check and topic confirmation
 **Wave 2** (parallel): Primary source identification + stakeholder/actor mapping + data and statistics search
 **Wave 3** (after Wave 2): Media and community sources + policy/regulatory/technical depth + cross-reference
 **Wave 4** (after all data): Framework analysis and synthesis
