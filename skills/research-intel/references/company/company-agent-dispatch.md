@@ -19,7 +19,7 @@ Every agent dispatched from a company mode investigation must receive all of the
 3. **KIT list with current status** — each KIT labelled: answered / partial / unanswered
 4. **Research log excerpt** — sources accessed so far (prevents duplication)
 5. **Specific task for this agent** — named source targets, what to look for, return format
-6. **Tier constraint** — "This is a Tier [N] investigation. Do not use any layer above the cap for this tier."
+6. **Tier constraint** — "This is a Tier [N] investigation. Do not use any layer above the cap for this tier. Use Layer 4 only when a search or fetch fails, and record the source and why. Layer 4 limits: no source behind a login, no LinkedIn, never solve a captcha, no stealth tools or session cookies, respect site terms, robots rules and rate limits; in a sensitive integrity investigation do not use Layer 4 unless the user has confirmed it."
 7. **Output instruction** — what to write back (see Handoff Format below)
 
 Do not dispatch agents without the scoping document and research log.
@@ -129,4 +129,4 @@ Sequential execution is always a valid fallback.
 | Tier 2 — Standard | Layer 3 | Never | Yes, if configured |
 | Tier 3 — Full Investigation | Layer 4 | Yes | Yes |
 
-Include the tier constraint in every agent briefing: "This is a Tier [N] investigation. Do not use any layer above the cap for this tier."
+Include the tier constraint in every agent briefing: "This is a Tier [N] investigation. Do not use any layer above the cap for this tier. Use Layer 4 only when a search or fetch fails, and record the source and why. Layer 4 limits: no source behind a login, no LinkedIn, never solve a captcha, no stealth tools or session cookies, respect site terms, robots rules and rate limits; in a sensitive integrity investigation do not use Layer 4 unless the user has confirmed it."

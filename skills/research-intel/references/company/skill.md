@@ -173,4 +173,4 @@ Post the wave summary after every wave. The format is in references/shared/INTEL
 8. Expert QA. Route synthesis through expert panels before finalising.
 9. Be transparent about limitations. State assumptions, note stale data and flag access limits.
 10. Ethical boundaries and access. Use public sources only. Do not misrepresent identity or access authenticated systems. Do not use stealth tools or session cookies. Respect each site's terms of service and robots rules. Comply with the Privacy Act and other applicable law.
-11. Layer 4 is an automatic fallback. If Layers 1 to 3 fail, record the source and the reason, then use Playwright without asking. Tier 1 and Tier 2 never use it. When Playwright is not installed, or the browser also fails, log the source as a gap with the reason.
+11. Layer 4 is an automatic fallback. If Layers 1 to 3 fail, record the source and the reason, then use Playwright without asking (except a sensitive integrity investigation: confirm with the user first). Tier 1 and Tier 2 never use it. When Playwright is not installed, or the browser also fails, log the source as a gap with the reason.

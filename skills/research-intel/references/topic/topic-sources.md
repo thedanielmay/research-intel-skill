@@ -2,7 +2,7 @@
 
 ## Overview
 
-This register provides the primary sources, API endpoints, access notes, and filtering heuristics for each topic mode module. Use Layer 1 (API) sources first, since they are faster, more reliable, and return structured data. Fall back to Layer 2 (search then fetch) and, when configured, Layer 3 (scraping service). Layer 4 (Playwright) runs only after the user approves that source, per the references/shared/web-access-layers.md protocol.
+This register provides the primary sources, API endpoints, access notes, and filtering heuristics for each topic mode module. Use Layer 1 (API) sources first, since they are faster, more reliable, and return structured data. Fall back to Layer 2 (search then fetch) and, when configured, Layer 3 (scraping service). Layer 4 (Playwright) is the automatic fallback at Tier 3, per references/shared/web-access-layers.md (except a sensitive integrity investigation: confirm with the user first)., per the references/shared/web-access-layers.md protocol.
 
 ---
 

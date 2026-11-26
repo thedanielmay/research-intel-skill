@@ -127,4 +127,4 @@ Control which web access layers agents may use based on investigation tier. Brie
 
 Layer 4 is the automatic fallback at Tier 3. An agent that needs it records the source and why, then runs it without asking. If Playwright is not installed, or the browser also fails, the agent logs the source as a gap with the reason and moves on.
 
-Include the tier constraint in every agent briefing: "This is a Tier [N] investigation. Do not use any layer above the cap for this tier. Use Layer 4 only when a search or fetch fails, and record the source and why."
+Include the tier constraint in every agent briefing: "This is a Tier [N] investigation. Do not use any layer above the cap for this tier. Use Layer 4 only when a search or fetch fails, and record the source and why. Layer 4 limits: no source behind a login, no LinkedIn, never solve a captcha, no stealth tools or session cookies, respect site terms, robots rules and rate limits; in a sensitive integrity investigation do not use Layer 4 unless the user has confirmed it."
